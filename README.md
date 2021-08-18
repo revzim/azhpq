@@ -1,6 +1,7 @@
 # azhpq
 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/revzim/azhpq)](https://pkg.go.dev/github.com/revzim/azhpq)
+[![Go Report Card](https://goreportcard.com/badge/github.com/revzim/azhpq)](https://goreportcard.com/report/github.com/revzim/azhpq)
 
 ## golang heap priority queue
 - simple, quick, & lightweight
