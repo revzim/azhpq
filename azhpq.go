@@ -1,3 +1,4 @@
+// Package azhpq --
 // revzim <https://github.com/revzim>
 // AZHPQ - HEAP PRIORITY QUEUE
 package azhpq
@@ -18,10 +19,6 @@ type (
 		Priority int         `json:"priority"`
 	}
 )
-
-const ()
-
-var ()
 
 // Compare --
 // COMPARE PRIO OF A & B
@@ -124,9 +121,8 @@ func (hpq *HeapPriorityQueue) Poll() *QueueNode {
 func (hpq *HeapPriorityQueue) Peek() *QueueNode {
 	if hpq.Size == 0 {
 		return nil
-	} else {
-		return hpq.Queue[0]
 	}
+	return hpq.Queue[0]
 }
 
 // IsEmpty --
@@ -198,28 +194,27 @@ func (hpq *HeapPriorityQueue) RemoveOne(cb func(val *QueueNode) bool) *QueueNode
 func (hpq *HeapPriorityQueue) RemoveMany(cb func(val *QueueNode) bool, limit int) []*QueueNode {
 	if hpq.Size < 1 {
 		return nil
-	} else {
-		size := 0
-		var removedItems []*QueueNode
-		tmpSize := 0
-		tmpItems := make([]*QueueNode, hpq.Size)
-		for size < limit && !hpq.IsEmpty() {
-			val := hpq.Poll()
-			if cb(val) {
-				removedItems = append(removedItems, val)
-				size++
-			} else {
-				tmpItems[tmpSize] = val
-				tmpSize++
-			}
-		}
-		i := 0
-		for i < tmpSize {
-			hpq.Add(tmpItems[i])
-			i++
-		}
-		return removedItems
 	}
+	size := 0
+	var removedItems []*QueueNode
+	tmpSize := 0
+	tmpItems := make([]*QueueNode, hpq.Size)
+	for size < limit && !hpq.IsEmpty() {
+		val := hpq.Poll()
+		if cb(val) {
+			removedItems = append(removedItems, val)
+			size++
+		} else {
+			tmpItems[tmpSize] = val
+			tmpSize++
+		}
+	}
+	i := 0
+	for i < tmpSize {
+		hpq.Add(tmpItems[i])
+		i++
+	}
+	return removedItems
 }
 
 // ReplaceTop --
@@ -227,11 +222,10 @@ func (hpq *HeapPriorityQueue) RemoveMany(cb func(val *QueueNode) bool, limit int
 func (hpq *HeapPriorityQueue) ReplaceTop(val *QueueNode) *QueueNode {
 	if hpq.Size == 0 {
 		return nil
-	} else {
-		replacedVal := hpq.Queue[0]
-		hpq.percDown(0)
-		return replacedVal
 	}
+	replacedVal := hpq.Queue[0]
+	hpq.percDown(0)
+	return replacedVal
 }
 
 // NSmallest --

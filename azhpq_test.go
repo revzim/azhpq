@@ -1,3 +1,4 @@
+// Package azhpq --
 // revzim <https://github.com/revzim>
 // AZHPQ - HEAP PRIORITY QUEUE
 package azhpq
@@ -80,9 +81,8 @@ func TestHPQ(t *testing.T) {
 	hpq.RemoveMany(func(val *QueueNode) bool {
 		if val.Priority >= 12 {
 			return false
-		} else {
-			return true
 		}
+		return true
 	}, 10)
 
 	hpq.ForEach(func(qn *QueueNode, i int) {
